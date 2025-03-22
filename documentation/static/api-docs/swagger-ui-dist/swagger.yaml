@@ -1,0 +1,131 @@
+
+openapi: 3.0.0  # Add OpenAPI version here
+info:
+  title: WebSocket API
+  description: WebSocket API documentation for the ACC drawing game "Scribblers"
+  version: 1.0.0
+
+paths:
+  /socket.io:
+    post:
+      summary: WebSocket Connection
+      description: Establishes a WebSocket connection using Socket.io
+      responses:
+        101:
+          description: Switching Protocols - Connection established
+
+# Defines the schemas (data structures) for the events in the WebSocket API
+components:
+  schemas:
+    DrawEvent:
+      type: object
+      description: Data structure for sending drawing information
+      properties:
+        x:
+          type: number
+          description: The x-coordinate of the drawing stroke
+        y:
+          type: number
+          description: The y-coordinate of the drawing stroke
+        color:
+          type: string
+          description: The color of the stroke
+        thickness:
+          type: number
+          description: The thickness of the stroke
+        strokeId: 
+          type: number
+          description: The ID of the stroke
+    
+    onPlayerJoin:
+      route: join_a_room
+      type: String Json
+      description: When a user joins a game they must use this endpoint to join a room
+      properties:
+        roomId:
+          type: string
+          description: This is the name of the room the user is going to join
+    
+    onChatMessage:
+      route: on_chat_message
+      type: String Json
+      description: Chat messages that will be broadcasted to everybody within the chat room
+      properties:
+        roomId:
+          type: string
+          description: This is the name of the room the user is going to join
+        msg:
+          type: string
+          description: This is the message received
+    
+    broadcastToRoom:
+      route: broad_cast_to_room
+      type: String Json
+      description: Handles all processes related to updating game data to all players in the game session
+      properties:
+        roomId:
+          type: string
+          description: This is the name of the room the user is going to join
+        msg:
+          type: string
+          description: This is the message received
+    
+
+  # Custom WebSocket message definitions, mimicking REST API calls
+    broad_cast_to_room:
+      description: This is the event that will emit data from broad cast to room
+      payload:
+        roomId: 
+          type: string
+          description: The id of the room the data is being broadcasted to
+        msg:
+          type: string
+          description: The message the sender produced
+        sender:
+          type: string
+          desciprtion: The id of the sender
+    onChatMessage:
+      description: This is the event that will emit data from broad cast to room
+      payload:
+        roomId: 
+          type: string
+          description: The id of the room the data is being broadcasted to
+        msg:
+          type: string
+          description: The message the sender produced
+        sender:
+          type: string
+          desciprtion: The id of the sender
+    broad_cast_to_room:
+      description: This is the event that will emit data from broad cast to room
+      payload:
+        roomId: 
+          type: string
+          description: The id of the room the data is being broadcasted to
+        msg:
+          type: string
+          description: The message the sender produced
+        sender:
+          type: string
+          desciprtion: The id of the sender
+    
+    messages:
+      draw:
+        description: WebSocket event for sending drawing data
+        payload:
+          $ref: "#/components/schemas/DrawEvent"
+
+    erase:
+      description: WebSocket event for erasing drawing data
+      payload:
+        $ref: "#/components/schemas/EraseEvent"
+
+    undo:
+      description: WebSocket event for undoing drawing data
+      payload:
+        $ref: "#/components/schemas/UndoEvent"
+
+    guess:
+      description: WebSocket event for submitting a player's guess
+      payload:
+        $ref: "#/components/schemas/GuessEvent"

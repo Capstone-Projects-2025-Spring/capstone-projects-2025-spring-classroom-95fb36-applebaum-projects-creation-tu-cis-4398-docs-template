@@ -98,6 +98,15 @@ sidebar_position: 3
         - Returns: void
         <!-- - Errors Thrown: Failure to add User to MongoDB -->
 
+    - `isComment(text)`
+        - Purpose: Determines if current line is a comment
+        - Pre-Condition: Text Editor Open
+        - Post-Condition: Display suggestion based on the comment
+        - Parameters:
+            - text: A String respresenting an inline comment
+        - Returns: void
+        <!-- - Errors Thrown: Failure to add User to MongoDB -->
+
 ## `+deactivate()`
   Function to dismount the extension
   - Methods

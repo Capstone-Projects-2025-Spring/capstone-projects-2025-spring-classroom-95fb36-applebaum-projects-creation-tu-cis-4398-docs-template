@@ -7,6 +7,12 @@ class CodeRequest(BaseModel):
     code: str
     instructions: str
 
+class CommentRequest(BaseModel):
+    """
+    Represents the request body containing code and instructions.
+    """
+    comment:str
+
 class ExplanationRequest(BaseModel):
     """
     Represents the request body containing code and instructions.

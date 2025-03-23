@@ -19,7 +19,9 @@ export async function activate(context: vscode.ExtensionContext) {
     let acceptedMostRecentSugg = false;
     let suggestorCancelled = false;
     let mostRecentAcceptedSuggestion: string;
+    vscode.commands.registerCommand("incorrectSuggestion", async () => {
 
+    })
     // Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "educode" is now active!');
@@ -75,6 +77,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
     const suggestor: vscode.InlineCompletionItemProvider = {
 		provideInlineCompletionItems: async(document, position, context, token):Promise<InlineCompletionItem[] | InlineCompletionList> => {
+            console.log(context.triggerKind)
 			console.log("provideInlineCompletionItems Called");
 			console.log(position);
             let suggestion = "";
@@ -93,7 +96,16 @@ export async function activate(context: vscode.ExtensionContext) {
                 acceptedMostRecentSugg = false;
                 return [];
             }
-            
+            else if (context.triggerKind === 0) {
+                console.log("INCORRECT SUGGESTION")
+                const res = await fetch('http://localhost:8000/suggestIncorrect', {method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' },
+                        body: JSON.stringify({code: document.getText(), instructions:""})
+                });
+                const json = await res.json() as {Response:string};
+                suggestion = json["Response"];
+            } 
             else if (isComment(document.lineAt(position.line-1).text)){
                 const comment = document.lineAt(position.line-1).text;
                 console.log("previous comment",comment);

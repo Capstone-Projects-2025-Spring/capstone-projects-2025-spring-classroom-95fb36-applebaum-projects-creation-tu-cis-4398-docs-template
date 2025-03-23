@@ -36,7 +36,7 @@ async def get_suggestion(request: CodeRequest) -> dict:
         raise HTTPException(status_code=500, detail=str(e))
     
 
-@router.post('/suggest-inc', status_code=200, response_model=SuggestionResponse)
+@router.post('/suggestIncorrect', status_code=200, response_model=SuggestionResponse)
 async def get_incorrect_suggestion(request: CodeRequest) -> dict:
     try:
         generated_code = await generate_incorrect_suggestion(request)

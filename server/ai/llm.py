@@ -1,5 +1,5 @@
 from openai import OpenAI
-from .models import CodeRequest
+from .models import CodeRequest, CommentRequest
 from dotenv import load_dotenv
 import os
 
@@ -75,3 +75,29 @@ async def explainConcept(question:str)-> str:
         return generated_code
     except Exception as e:
         raise Exception(f"Error generating concept explanation: {str(e)}")
+    
+
+async def generate_comment_suggestion(request: CommentRequest):
+    """
+    Generate a suggestion for the given comment.
+
+    **Request Body:**
+    - `comment`: The previous line's comment extracted by the frontend
+    **Response:**
+    - `Response`: A generated code snippet based on the input.
+    """
+
+    try:
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {"role": "developer", "content": "You are an AI code assistant. Given the comment text, generate the remaining characters needed to implement the comment's function, do NOT include code already given in the sample. Provide only the raw code without any formatting or Markdown symbols. Do NOT include triple backticks or extra explanations—only the code itself. Keep function as concise as possible." },
+                {"role": "user", "content": f"Comment:\n{request.comment}"}
+            ],
+            temperature=0.2,
+        )
+        generated_code = response.choices[0].message.content
+        print(generated_code)
+        return generated_code
+    except Exception as e:
+        raise Exception(f"Error generating suggestion: {str(e)}")

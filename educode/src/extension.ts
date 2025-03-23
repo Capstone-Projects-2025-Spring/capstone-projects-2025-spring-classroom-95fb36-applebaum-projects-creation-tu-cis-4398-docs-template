@@ -42,10 +42,10 @@ export async function activate(context: vscode.ExtensionContext) {
             const cursorLine = editor.selection.active.line;  
 
             // Check if the cursor has moved to a new line compared to the last known position
-            const movedToNewLine = cursorLine != lastCursorLine;
+            const movedToNewLine = cursorLine !== lastCursorLine;
 
             // Log only if the cursor has moved to a new line and the text has changed
-            if (movedToNewLine && text != lastLoggedText) {
+            if (movedToNewLine && text !== lastLoggedText) {
                 // Call the logUserInput function to log the current text and the file name
                 await logUserInput(text, document.fileName);
                 
@@ -77,6 +77,8 @@ export async function activate(context: vscode.ExtensionContext) {
 		provideInlineCompletionItems: async(document, position, context, token):Promise<InlineCompletionItem[] | InlineCompletionList> => {
 			console.log("provideInlineCompletionItems Called");
 			console.log(position);
+            let suggestion = "";
+            
 
             if (acceptedMostRecentSugg) {
                 console.log("provideInlineCompletionItems cancelled (recently accepted suggestion)");
@@ -84,24 +86,46 @@ export async function activate(context: vscode.ExtensionContext) {
                 acceptedMostRecentSugg = false;
                 return [];
             }
+            
+            else if (isComment(document.lineAt(position).text)){
+                console.log("comment detected");
+                suggestorCancelled = true;
+                acceptedMostRecentSugg = false;
+                return [];
+            }
+            
+            else if (isComment(document.lineAt(position.line-1).text)){
+                const comment = document.lineAt(position.line-1).text;
+                console.log("previous comment",comment);
+                const res = await fetch('http://localhost:8000/commentSuggest', {method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' },
+                    body: JSON.stringify({comment:comment})
+                });
+                const json = await res.json() as {Response:string};
+                suggestion = json["Response"];
+                console.log(suggestion)
 
-			const res = await fetch('http://localhost:8000/suggest', {method: 'POST',
-				headers: {
-					'Content-Type': 'application/json' },
-				body: JSON.stringify({code: document.getText(), instructions:""})
-			});
-				
-			console.log(res.status);
-			const json = await res.json() as {Response:string}
-			console.log(res.status, json);//logs the status of the llm response and the code given ->
-			const suggestion = json["Response"];
+            }
+			else {
+                const res = await fetch('http://localhost:8000/suggest', {method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' },
+                    body: JSON.stringify({code: document.getText(), instructions:""})
+                });
+                    
+                console.log(res.status);
+                const json = await res.json() as {Response:string};
+                console.log(res.status, json);//logs the status of the llm response and the code given ->
+                suggestion = json["Response"];
+            }
 
-            if (suggestion == mostRecentAcceptedSuggestion) {
+            if (suggestion === mostRecentAcceptedSuggestion) {
+                console.log(suggestion,mostRecentAcceptedSuggestion);
                 console.log("provideInlineCompletionItems cancelled (duplicate of most recent accepted suggestion given)");
                 return [];
             }
 
-			const range = new vscode.Range(position.translate(0, 0), position.translate(0,suggestion.length));
 			// const text = document.getText(range);
 			// console.log("provideInlineCompletionItems Called");
             const timestamp = new Date().toISOString();
@@ -200,7 +224,7 @@ export async function activate(context: vscode.ExtensionContext) {
                 }
             }
             if (message.command === "log"){
-                console.log(message.text)
+                console.log(message.text);
             }
 
         }, undefined, context.subscriptions);
@@ -348,6 +372,13 @@ async function registerUserInMongoDB(userData: { gitHubUsername: string | number
 		console.log(`Failed to add user: ${error}`);
     }
 }
+const isComment = (text:string)=>{
+    //python one liner
+    if (text.trim().startsWith("#")){
+        return true;
+    }
+    return false;
+};
 
 // This method is called when extension is deactivated
 export function deactivate() {
@@ -356,3 +387,5 @@ export function deactivate() {
         clearInterval(loggingTimer);
     }
 }
+
+

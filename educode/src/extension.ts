@@ -19,9 +19,7 @@ export async function activate(context: vscode.ExtensionContext) {
     let acceptedMostRecentSugg = false;
     let suggestorCancelled = false;
     let mostRecentAcceptedSuggestion: string;
-    vscode.commands.registerCommand("incorrectSuggestion", async () => {
-
-    })
+    
     // Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "educode" is now active!');

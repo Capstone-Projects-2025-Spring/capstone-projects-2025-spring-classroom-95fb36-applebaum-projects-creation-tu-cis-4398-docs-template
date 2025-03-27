@@ -1,9 +1,11 @@
+
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=17850491)
 <div align="center">
 
-# Project Name
+# Scribblers
 [![Report Issue on Jira](https://img.shields.io/badge/Report%20Issues-Jira-0052CC?style=flat&logo=jira-software)](https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/DT/issues)
 [![Deploy Docs](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml)
-[![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://applebaumian.github.io/tu-cis-4398-docs-template/)
+[![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://capstone-projects-2025-spring.github.io/project-aac-game-team-a/)
 
 
 </div>
@@ -39,17 +41,24 @@ Discuss what you need to develop this project. This includes background informat
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/ApplebaumIan">
-            <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
+        <a href="https://github.com/tuo62395">
+            <img src="https://github.com/user-attachments/assets/435425ae-fc11-42ec-a150-2d36e2cd33a7" width="100;" alt="SchwartzIsaac"/>
             <br />
-            <sub><b>Ian Tyler Applebaum</b></sub>
+            <sub><b>Isaac Schwartz</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/leighflagg">
-            <img src="https://avatars.githubusercontent.com/u/77810293?v=4" width="100;" alt="leighflagg"/>
+        <a href="https://github.com/kenfonseca">
+            <img src="https://github.com/Capstone-Projects-2025-Spring/project-aac-game-team-a/blob/main/documentation/static/img/kenProfPic.jpeg?raw=true" width="100;" alt="FonsecaKenneth"/>
             <br />
-            <sub><b>Null</b></sub>
+            <sub><b>Kenneth Fonseca</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/tlheyward">
+            <img src="https://github.com/Capstone-Projects-2025-Spring/project-aac-game-team-a/blob/main/documentation/static/img/terrellProfPic.jpg?raw=true" width="100;" alt="HeywardTerrell"/>
+            <br/>
+            <sub><b>Terrell Heyward</b></sub>
         </a>
     </td></tr>
 </table>

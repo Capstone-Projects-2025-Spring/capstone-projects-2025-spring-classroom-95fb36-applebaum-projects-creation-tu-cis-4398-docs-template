@@ -1,0 +1,53 @@
+name: run_backend_branch_test
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+  actions: write
+  pull-requests: write 
+
+jobs:
+  branch_test:
+    runs-on: ubuntu-latest
+    env:
+      GIT_USER: ${{secrets.USER}}
+      GIT_PASS: ${{secrets.TOKEN}}
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          node-version: '22.x'
+      - name: Install Docker using Docker's official script
+        run: |
+          curl -fsSL https://get.docker.com -o get-docker.sh
+          sudo sh get-docker.sh
+        continue-on-error: false
+      - name: Install Docker Compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version
+        continue-on-error: false
+      - run: npm run setup
+      - run: npm run test:bc && rm -rf ./documentation/docs/testing/backend-lcov-report && mv ./storybuilder/Backend/coverage/lcov-report ./documentation/docs/testing/backend-lcov-report
+
+      
+      - name: Update Coverage Report
+        run: |
+          git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+          git add -f ./documentation/docs/testing/backend-lcov-report
+          git commit -m "Updated Backend Coverage Report"
+      
+      - name: Push Coverage Report to Branch
+        uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ github.head_ref }}

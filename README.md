@@ -1,37 +1,33 @@
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=17857627)
 <div align="center">
 
-# Project Name
-[![Report Issue on Jira](https://img.shields.io/badge/Report%20Issues-Jira-0052CC?style=flat&logo=jira-software)](https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/DT/issues)
-[![Deploy Docs](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml)
-[![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://applebaumian.github.io/tu-cis-4398-docs-template/)
+# Story Builder
+### By Kamaljeeth Vijay, Edgardo Gonzalez, Dylan Cael, John Dang, Yousef Qari, and Christopher McGarrity
+[![Report Issue on Jira](https://img.shields.io/badge/Report%20Issues-Jira-0052CC?style=flat&logo=jira-software)](https://temple-cis-projects-in-cs.atlassian.net/jira/software/c/projects/SBTA/issues?jql=project%20%3D%20%22SBTA%22%20ORDER%20BY%20created%20DESC)
+[![Deploy Docs](https://github.com/ApplebaumIan/tu-cis-4398-docs-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/Capstone-Projects-2025-Spring/project-003-story-builder-team-1/actions/workflows/deploy.yml)
+[![Documentation Website Link](https://img.shields.io/badge/-Documentation%20Website-brightgreen)](https://capstone-projects-2025-spring.github.io/project-003-story-builder-team-1/)
 
 
 </div>
 
+## Project Overview
 
-## Keywords
-
-Section #, as well as any words that quickly give your peers insights into the application like programming language, development platform, type of application, etc.
+AI Story Builder Team 1
 
 ## Project Abstract
 
-This document proposes a novel application of a text message (SMS or Email) read-out and hands-free call interacted between an Android Smartphone and an infotainment platform (headunit) in a car environment. When a phone receives an SMS or Email, the text message is transferred from the phone to the headunit through a Bluetooth connection. On the headunit, user can control which and when the received SMS or E-mail to be read out through the in-vehicle audio system. The user may press one button on the headunit to activate the hands-free feature to call back the SMS sender.
-
-## High Level Requirement
-
-Describe the requirements – i.e., what the product does and how it does it from a user point of view – at a high level.
+This design document describes a full-stack web application for an AI story generator with an efficient, highly customizable refinement system. These generated stories are organized via agents that take in the user’s prompt as input, and they will critique the AI-generated result after sending the prompt through an LLM. The app will then present these results to the user, who can vote on their favorite for further refinement or start a new session. After playing with this app, the user will feel better equipped with a myriad of options for learning how to refine and adjust AI-generated material, which is a critical step to successfully integrate this technology in workflows for professionals and hobbyists alike.
 
 ## Conceptual Design
 
-Describe the initial design concept: Hardware/software architecture, programming language, operating system, etc.
+The primary language used to code this application will be Javascript, with dependencies such as React.js and Express.js used for the frontend and backend, respectively. A MongoDB database will be used as a repository to organize the refinement history for every prompt the user generates, as well as a secure method of storing account information. The UI will include an account creation page, a prompt generation page, and a prompt history page, with an option to start a new session at any time. If a new session begins, the previous session will be on hold until it is reactivated. 
+
+The amount of agents running at a time is scalable, and the user will decide how many agents it wants to run for each prompt. These agents will have access to the LLM that generates the content, and they will each refine and re-prompt these results before presenting them to the user. The user can continue this process indefinitely and the program will continually adjust the new results each time.
 
 ## Background
 
-The background will contain a more detailed description of the product and a comparison to existing similar projects/products. A literature search should be conducted and the results listed. Proper citation of sources is required. If there are similar open-source products, you should state whether existing source will be used and to what extent. If there are similar closed-source/proprietary products, you should state how the proposed product will be similar and different.
+Many AI clients and web applications exist in order to make it easier for non-technical people to access this technology, such as ChatGPT and Deepseek’s websites. There are also plenty of programs the user can choose to locally host LLMs, like Ollama and Text Generation WebUI. These options usually either require too much setup for casual users or provide fewer customization options in the refinement process. ChatGPT, for example, will provide, at most, two agents at a time, and these agents only return the output without critiquing it themselves first. By including elements from both approaches to LLM interfaces, this application reaps the benefits of a technician-focused user experience with the ease of use of Llama and OpenAI’s web clients.
 
-## Required Resources
-
-Discuss what you need to develop this project. This includes background information you will need to acquire, hardware resources, and software resources. If these are not part of the standard Computer Science Department lab resources, these must be identified early and discussed with the instructor.
 
 ## Collaborators
 
@@ -39,10 +35,10 @@ Discuss what you need to develop this project. This includes background informat
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/ApplebaumIan">
-            <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
+        <a href="https://github.com/JawnnyD">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQFm7qBiz7RFJw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1677198760248?e=1745452800&v=beta&t=G1zs2Syy5fzCnQ5KwwJpphi0q95V1fuWplLmwP2-Nt4" width="100;" alt="DangJohn"/>
             <br />
-            <sub><b>Ian Tyler Applebaum</b></sub>
+            <sub><b>John Dang</b></sub>
         </a>
     </td>
     <td align="center">

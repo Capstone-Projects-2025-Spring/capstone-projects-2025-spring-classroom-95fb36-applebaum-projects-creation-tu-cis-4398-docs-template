@@ -1,0 +1,14 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+openai
+pillow
+python-dotenv
+scikit-learn
+nltk
+firebase
+seaborn
+matplotlib
+gunicorn==21.2.0
+whitenoise==6.5.0

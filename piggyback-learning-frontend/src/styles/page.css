@@ -1,0 +1,579 @@
+/* Base Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('https://getwallpapers.com/wallpaper/full/3/3/0/1115244-amazing-kids-desktop-background-1920x1200-images.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  text-align: center;
+  font-size: 15px;
+}
+
+:root {
+  --header-height: 100px;
+  --footer-height: 80px;
+  --primary-green: #4CAF50;
+  --gradient-orange: linear-gradient(to right, #ff9800, #ffcc80);
+}
+
+/* Container limit */
+.home-container {
+  background-image: url('https://getwallpapers.com/wallpaper/full/3/3/0/1115244-amazing-kids-desktop-background-1920x1200-images.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  animation: fadeIn 1s ease-out; /* Entrance animation */
+}
+
+/* Header */
+.header-enhanced {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background: var(--primary-green);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  box-sizing: border-box;
+  animation: slideDownFadeIn 0.8s ease-out; /* Entrance animation */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-animated {
+  height: 60px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-animated:hover {
+  transform: rotate(360deg) scale(1.1); /* Enhanced hover */
+  filter: brightness(1.2); /* Glow effect */
+}
+
+.site-title {
+  color: white;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.site-title:hover {
+  transform: scale(1.05); /* Subtle scale on hover */
+}
+
+.header-enhanced nav ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.header-enhanced nav ul li {
+  margin: 0 6px;
+}
+.header-enhanced nav ul li a {
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  transition: all 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative; /* For ripple effect */
+  overflow: hidden;
+}
+.header-enhanced nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffeb38;
+  transform: scale(1.1); /* Scale on hover */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+.header-enhanced nav ul li a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+.header-enhanced nav ul li a:hover::after {
+  width: 200px;
+  height: 200px; /* Ripple effect on hover */
+}
+
+/* Main */
+main {
+  padding-top: var(--header-height);
+  padding-bottom: calc(var(--footer-height) + 40px); /* Adjusted to add 40px space below last component */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Intro */
+.intro-enhanced {
+  background: var(--gradient-orange);
+  padding: 40px 60px;
+  margin: 10px auto;
+  border-radius: 30px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideDownFadeIn 1s ease-out, floatUpDown 3s ease-in-out infinite;
+  transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease;
+}
+.intro-enhanced:hover {
+  background: linear-gradient(135deg, #FFD700, #ff46a2);
+  color: white;
+  transform: scale(1.02) translateY(-5px); /* Enhanced hover */
+}
+.animated-heading {
+  font-size: 2.2em;
+  font-weight: bold;
+  background: linear-gradient(270deg, #0018cb, #1a85ff, #ff00aa, #00fff7, #ff0000);
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 8s ease infinite, fadeIn 1.5s ease-out;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.animated-heading:hover {
+  transform: scale(1.05); /* Subtle scale on hover */
+}
+.intro-enhanced h1 {
+  font-size: 2em;
+  color: white;
+  margin: 0 0 10px;
+}
+.tagline {
+  font-size: 1em;
+  color: #fff;
+  margin: 0 0 15px;
+}
+.cta-button {
+  background: var(--primary-green);
+  padding: 10px 25px;
+  font-size: 1em;
+  border-radius: 30px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.cta-button:hover {
+  background: #45a049;
+  transform: scale(1.1); /* Larger scale */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+}
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+.cta-button:hover::after {
+  width: 300px;
+  height: 300px; /* Ripple effect */
+}
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Dropdown Section */
+.grade-selection-enhanced,
+.youtube-url-enhanced,
+.videos-enhanced {
+  position: relative;
+  overflow: hidden; /* Prevents overflow of scrolling content */
+  padding: 20px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out; /* Entrance animation */
+  transition: transform 0.3s ease;
+}
+.grade-selection-enhanced:hover,
+.youtube-url-enhanced:hover,
+.videos-enhanced:hover {
+  transform: scale(1.02); /* Subtle scale on hover */
+}
+
+.grade-selection-enhanced h2,
+.youtube-url-enhanced h2,
+.videos-enhanced h2 {
+  font-size: 2em;
+  background: var(--gradient-orange);
+  padding: 12px 24px;
+  border-radius: 20px;
+  color: white;
+  display: inline-block;
+  margin-bottom: 15px;
+  transition: transform 0.2s ease;
+}
+.grade-selection-enhanced h2:hover,
+.youtube-url-enhanced h2:hover,
+.videos-enhanced h2:hover {
+  transform: scale(1.05); /* Subtle scale on hover */
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+}
+.grade-dropdown {
+  padding: 10px;
+  font-size: 1.1em;
+  width: 250px;
+  border-radius: 10px;
+  border: 2px solid var(--primary-green);
+  transition: 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.grade-dropdown:hover,
+.grade-dropdown:focus {
+  transform: scale(1.05);
+  border-color: #45a049;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Area */
+.url-input-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.youtube-url-enhanced input[type="text"] {
+  padding: 10px;
+  font-size: 1.1em;
+  border-radius: 100px;
+  border: 2px solid var(--primary-green);
+  width: 60%;
+  outline: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.youtube-url-enhanced input[type="text"]:hover,
+.youtube-url-enhanced input[type="text"]:focus {
+  transform: scale(1.03);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Submit Button */
+
+button.btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 800;
+  border: none;
+  position: relative;
+  letter-spacing: 0.1em;
+  margin: 10px auto;
+  padding: 10px 30px; 
+  background: #4CAF50; 
+  outline: none;
+  font-size: 16px;
+  color: white;
+  border-radius: 50px; 
+  width: auto; 
+  max-width: 250px; 
+  transition: all 0.5s ease;
+  display: inline-block; 
+}
+button.btn::before,
+button.btn::after {
+  content: "";
+  position: absolute;
+  height: 30%;
+  width: 8%;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: -2;
+  border-radius: 50%;
+}
+
+button.btn::before {
+  background-color:  #ff46a2;
+  top: -0.5rem;
+  left: 0.5rem;
+  animation: topAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.25s infinite alternate;
+}
+
+button.btn::after {
+  background-color: #008d00;
+  top: 2.2rem;
+  left: 8rem;
+  animation: bottomAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s infinite alternate;
+}
+
+button.btn:hover {
+  transform: scale(1.1) translateY(-2px);
+  background: #45a049;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+button.btn:hover::before,
+button.btn:hover::after {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  animation: none;
+}
+
+button.btn:hover::after {
+  left: 0;
+}
+
+button.btn:hover::before {
+  top: 0.3rem;
+  left: 0.3rem;
+}
+
+/* Animations */
+@keyframes topAnimation {
+  from {
+    transform: translate(0rem, 0);
+  }
+  to {
+    transform: translate(0rem, 2.5rem);
+  }
+}
+@keyframes bottomAnimation {
+  from {
+    transform: translate(-8rem, 0);
+  }
+  to {
+    transform: translate(0rem, 0);
+  }
+}
+
+.submit-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+.submit-btn:hover::after {
+  width: 200px;
+  height: 200px; /* Ripple effect */
+}
+
+/* Video Gallery */
+.video-scroll-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  position: relative;
+}
+.video-cards-horizontal {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 15px 60px;  /* Extra horizontal padding makes room for the scroll buttons */
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.video-cards-horizontal::-webkit-scrollbar {
+  height: 8px; /* Thin scrollbar */
+}
+.video-cards-horizontal::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2); /* Light, semi-transparent track */
+  border-radius: 10px;
+}
+.video-cards-horizontal::-webkit-scrollbar-thumb {
+  background: var(--primary-green); /* Match theme */
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.4); /* Subtle border for contrast */
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.video-cards-horizontal::-webkit-scrollbar-thumb:hover {
+  background: #45a049; /* Darker green on hover */
+  transform: scale(1.1); /* Slight scale for interactivity */
+}
+
+.video-card {
+  flex: 0 0 300px;  /* Fixed width for each video card */
+  background: white;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  animation: slideIn 0.5s ease-out; /* Entrance animation */
+}
+.video-card:hover {
+  transform: translateY(-10px) scale(1.05); /* Enhanced hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+.video-gallery-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* didn't know you could do this, feels like python */
+.video-card iframe,
+.video-thumbnail {
+  width: 356px;
+  height: 200px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.video-card:hover .video-thumbnail {
+  transform: scale(1.1); /* Zoom effect on hover */
+  filter: brightness(1.1); /* Brighten on hover */
+}
+.video-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 0;
+}
+.video-info p {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+.video-info p:hover {
+  transform: scale(1.05); /* Subtle scale on hover */
+}
+.play-icon {
+  color: var(--primary-green);
+  animation: pulse 2s infinite; /* Continuous pulse */
+}
+/* Scroll Buttons */
+.scroll-button {
+  width: 40px;
+  height: 40px;
+  font-size: 1.5em;
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.scroll-button:hover {
+  transform: scale(1.2); /* Larger scale */
+  background: #45a049;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.scroll-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+.scroll-button:hover::after {
+  width: 100px;
+  height: 100px; /* Ripple effect */
+}
+
+/* Footer */
+.footer-enhanced {
+  background: var(--primary-green);
+  padding: 20px;
+  color: white;
+  font-size: 1.2em;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--footer-height);
+  box-sizing: border-box;
+  z-index: 1000;
+  animation: slideUpFadeIn 0.8s ease-out; /* Entrance animation */
+  transition: transform 0.3s ease;
+}
+.footer-enhanced:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+}
+/* Animations */
+@keyframes floatUpDown {
+  0% { transform: translateY(-8px); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+@keyframes slideDownFadeIn {
+  0% { opacity: 0; transform: translateY(-15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

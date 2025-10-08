@@ -46,6 +46,7 @@ The component manages multiple state variables including:
 
 ## Game Logic Highlights
 
+- Checks the current turn and plays the phrase audio for one player at a time
 - Each player fills in a blank with a word from the AAC keyboard
 - Upon word selection, the system:
     - Fills in the blank
